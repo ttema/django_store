@@ -3,7 +3,7 @@
     overflow: auto;
     padding: 10px;
     width: 150px;
-    top: 80px; /* Расстояние от верхнего края */
+    top: 150px; /* Расстояние от верхнего края */
 }
 
 .content {

@@ -19,8 +19,8 @@ from mainapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.catalogue, name='catalogue'),
     path('adding_products', views.adding),
     path('add', views.add_product),
-    path('delete', views.delete_product)
+    path('delete', views.delete_product),
+    path('catalogue', views.catalogue)
 ]
