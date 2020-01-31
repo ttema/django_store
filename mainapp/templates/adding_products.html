@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить товар</title>
+</head>
+<body>
+    <form action="add" method="POST">
+        {% csrf_token %}
+        <p>
+            <label>ID товара:</label>
+            <input type="text" name="id">
+        </p>
+        <p>
+            <label>Имя товара:</label>
+            <input type="text" name="name">
+        </p>
+        <p>
+            <label>Описание товара:</label>
+            <input type="text" name="description">
+        </p>
+        <p>
+            <label>Цена товара:</label>
+            <input type="text" name="price">
+        </p>
+        <p>
+            <label>Категория товара:</label>
+            <input type="text" name="category">
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+    <form action="delete" method="POST">
+        {% csrf_token %}
+        <p>
+            <label>ID удаляемого продукта</label>
+            <input type="text" name="delete_product">
+        </p>
+        <input type="submit" value="Удалить">
+    </form>
+</body>
+</html>

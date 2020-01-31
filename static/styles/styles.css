@@ -1,0 +1,12 @@
+.sidebar {
+    position: absolute;
+    overflow: auto;
+    padding: 10px;
+    width: 150px;
+    top: 80px; /* Расстояние от верхнего края */
+}
+
+.content {
+    top: 40px; /* Расстояние от верхнего края */
+    left: 190px; /* Расстояние от левого края */
+}

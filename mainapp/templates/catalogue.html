@@ -1,0 +1,36 @@
+{% extends 'origin.html' %}
+
+{% block 'content' %}
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">SPORTS STORE</a>
+    </nav>
+    <ul class="nav flex-column sidebar">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+    </ul>
+    {% include "base_catalog.html" %}
+    <div>
+        <nav aria-label="...">
+          <ul class="pagination pagination-lg">
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                1
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+          </ul>
+        </nav>
+    </div>
+{% endblock %}

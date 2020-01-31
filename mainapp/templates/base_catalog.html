@@ -1,0 +1,11 @@
+{% if products.count > 0 %}
+        {% for i in products %}
+        <div class="card w-50 content" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{i.Name}}</h5>
+            <p class="card-text">{{i.Description}}</p>
+            <a href="#" class="btn btn-primary">${{i.Price}}</a>
+          </div>
+        </div>
+        {% endfor %}
+{% endif %}
