@@ -2,20 +2,20 @@
 
 {% block 'content' %}
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">SPORTS STORE</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000">SPORTS STORE</a>
     </nav>
     <ul class="nav flex-column sidebar">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
+            <a class="nav-link active" href="category/clothes">Clothes</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="category/watersport">Watersports</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="category/accessories">Accessories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            <a class="nav-link" href="category/equipment">Equipment</a>
         </li>
     </ul>
     {% if products.count > 0 %}
@@ -31,9 +31,9 @@
     {% endif %}
     <nav aria-label=" ">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+            <li class="page-item"><a class="page-link" href="/page/1">1</a></li>
+            <li class="page-item"><a class="page-link" href="/page/2">2</a></li>
+            <li class="page-item"><a class="page-link" href="/page/3">3</a></li>
         </ul>
     </nav>
 {% endblock %}

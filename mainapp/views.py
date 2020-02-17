@@ -5,10 +5,14 @@ from math import ceil
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-def catalogue(request):
+def categories(request, category):
+    products_list = Product.objects.filter(Category=category)
+    return render(request, 'catalogue.html', {'products': products_list})
+
+
+def catalogue(request, page=1):
     products_list = Product.objects.all()
-    # pages = products_list.count / 4
-    page = int(request.GET.get('page', default=1)) - 1
+    page -= 1
     if page == 0:
         products = products_list[0:4]
     else:
