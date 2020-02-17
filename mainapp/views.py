@@ -1,9 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Product
+from math import ceil
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
+def catalogue(request):
+    products_list = Product.objects.all()
+    # pages = products_list.count / 4
+    page = int(request.GET.get('page', default=1)) - 1
+    if page == 0:
+        products = products_list[0:4]
+    else:
+        products = products_list[4 * page:4 * page + 4]
+    return render(request, 'catalogue.html', {'products': products})
+
+
+''''''''''''''''
 def catalogue(request):
     list_of_products = Product.objects.all()
     page = request.GET.get('page', 1)
@@ -16,6 +29,7 @@ def catalogue(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
     return render(request, 'catalogue.html', {'products': products})
+'''''''''''''''''
 
 
 def adding(request):
@@ -38,9 +52,3 @@ def delete_product(request):
     product_to_delete = Product.objects.filter(ProductID=request.POST.get('delete_product'))
     product_to_delete.delete()
     return HttpResponseRedirect("/")
-
-'''''''''
-def catalogue(request):
-    products = Product.objects.all()
-    return render(request, "catalogue.html", {'products': products})
-'''''
