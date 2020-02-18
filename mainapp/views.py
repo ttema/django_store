@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from .models import Product
 from math import ceil
 from cart.forms import CartAddProductForm
@@ -31,7 +31,7 @@ def catalogue(request, page=1):
     return render(request, 'catalogue.html', {'products': products, "pages": pages_list})
 
 
-''''''''''''''''
+'''
 def catalogue(request):
     list_of_products = Product.objects.all()
     page = request.GET.get('page', 1)
@@ -44,11 +44,12 @@ def catalogue(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
     return render(request, 'catalogue.html', {'products': products})
-'''''''''''''''''
+'''
 
 
 def adding(request):
-    return render(request, "adding_products.html")
+    products = Product.objects.all()
+    return render(request, "adding_products.html", {"products": products})
 
 
 def add_product(request):
@@ -67,3 +68,17 @@ def delete_product(request):
     product_to_delete = Product.objects.filter(ProductID=request.POST.get('delete_product'))
     product_to_delete.delete()
     return HttpResponseRedirect("/")
+
+
+def edit_product(request, product_name):
+    product = Product.objects.get(Name=product_name)
+    if request.method == "POST":
+        product.ProductID = request.POST.get('id')
+        product.Name = request.POST.get('name')
+        product.Description = request.POST.get('description')
+        product.Price = request.POST.get('price')
+        product.Category = request.POST.get('category')
+        product.save()
+        return HttpResponseRedirect("/")
+    else:
+        return render(request, "adding_products.html", {"chosen_product": product})

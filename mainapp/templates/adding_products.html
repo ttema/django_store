@@ -5,6 +5,7 @@
     <title>Добавить товар</title>
 </head>
 <body>
+    <h3>Добавить продукт</h3>
     <form action="add" method="POST">
         {% csrf_token %}
         <p>
@@ -29,6 +30,7 @@
         </p>
         <input type="submit" value="Сохранить" >
     </form>
+    <h3>Удалить продукт</h3>
     <form action="delete" method="POST">
         {% csrf_token %}
         <p>
@@ -36,6 +38,36 @@
             <input type="text" name="delete_product">
         </p>
         <input type="submit" value="Удалить">
+    </form>
+    <h3>Редактировать продукт</h3>
+    <select name="Выберете продукт">
+        {% for product in products %}
+            <option><a href="{% url 'edit' product.Name %}">{{product.Name}}</a></option>
+        {% endfor %}
+    </select>
+    <form action="edit" method="POST">
+        {% csrf_token %}
+        <p>
+            <label>ID товара:</label>
+            <input type="text" name="id" value="{{chosen_product.ProductID}}">
+        </p>
+        <p>
+            <label>Имя товара:</label>
+            <input type="text" name="name">
+        </p>
+        <p>
+            <label>Описание товара:</label>
+            <input type="text" name="description">
+        </p>
+        <p>
+            <label>Цена товара:</label>
+            <input type="text" name="price">
+        </p>
+        <p>
+            <label>Категория товара:</label>
+            <input type="text" name="category">
+        </p>
+        <input type="submit" value="Редактировать">
     </form>
 </body>
 </html>

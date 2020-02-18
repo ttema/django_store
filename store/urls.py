@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^cart/', include(('cart.urls', 'cart'),  namespace='cart')),
     path('adding_products', views.adding),
+    path('edit/<str:product_name>', views.edit_product, name='edit'),
     path('add', views.add_product),
     path('delete', views.delete_product),
     path('', views.catalogue, name='index'),
