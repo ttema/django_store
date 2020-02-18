@@ -1,10 +1,7 @@
 {% extends 'origin.html' %}
 
 {% block 'content' %}
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">SPORTS STORE</a>
-    </nav>
-    <ul class="nav flex-column sidebar">
+<ul class="nav flex-column sidebar" xmlns:cart="http://www.w3.org/1999/xhtml">
         <li class="nav-item">
             <a class="nav-link active" href="{% url 'category' 'clothes' %}">Clothes</a>
         </li>
@@ -25,6 +22,11 @@
                 <h5 class="card-title">{{product.Name}}</h5>
                 <p class="card-text">{{product.Description}}</p>
                 <a href="#" class="btn btn-primary">${{product.Price}}</a>
+                  <form action="{% url "cart:cart_add" product.id %}" method="POST">
+                    {{ cart_product_form }}
+                    {% csrf_token %}
+                    <input type="submit" value="Добавить в корзину">
+                  </form>
               </div>
             </div>
         {% endfor %}
