@@ -6,8 +6,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def categories(request, category):
-    products_list = Product.objects.filter(Category=category)
-    return render(request, 'catalogue.html', {'products': products_list})
+    products = Product.objects.filter(Category=category)
+    pages = ceil(products.count() / 4)
+    pages_list = list(range(1, pages + 1))
+    return render(request, 'catalogue.html', {'products': products, "pages": pages_list})
 
 
 def catalogue(request, page=1):
@@ -17,7 +19,9 @@ def catalogue(request, page=1):
         products = products_list[0:4]
     else:
         products = products_list[4 * page:4 * page + 4]
-    return render(request, 'catalogue.html', {'products': products})
+    pages = ceil(products_list.count() / 4)
+    pages_list = list(range(1, pages + 1))
+    return render(request, 'catalogue.html', {'products': products, "pages": pages_list})
 
 
 ''''''''''''''''
